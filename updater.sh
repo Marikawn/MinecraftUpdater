@@ -1,11 +1,11 @@
 #!/bin/bash
 
 ## Notes about script
-## MINECRAFT_USER = The user that owns the minecraft server file
-## MINECRAFT_GROUP = The group that owns the minecraft server file
+## MINECRAFT_USER = The user that owns the minecraft server file.
+## MINECRAFT_GROUP = The group that owns the minecraft server file.
 ## MINECRAFT_DIR = The directory where the minecraft server jar file is stored on your system.
 ## DESKTOP_FILE = Modified the shortcut for the minecraft server for Ubuntu systems.
-## VERSION_FILE = Is a file that must be created that only contains the current file name of the server file. ie; minecraft_server.1.14.4.jar
+## VERSION_FILE = A file that must be created that only contains the current file name of the server file. ie; minecraft_server.1.14.4.jar
 
 MINECRAFT_USER=jdelgado
 MINECRAFT_GROUP=jdelgado
