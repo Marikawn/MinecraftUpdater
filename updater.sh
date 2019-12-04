@@ -1,5 +1,14 @@
 #!/bin/bash
 
+## Notes about script
+## MINECRAFT_USER = The user that owns the minecraft server file
+## MINECRAFT_GROUP = The group that owns the minecraft server file
+## MINECRAFT_DIR = The directory where the minecraft server jar file is stored on your system.
+## DESKTOP_FILE = Modified the shortcut for the minecraft server for Ubuntu systems.
+## VERSION_FILE = Is a file that must be created that only contains the current file name of the server file. ie; minecraft_server.1.14.4.jar
+
+MINECRAFT_USER=jdelgado
+MINECRAFT_GROUP=jdelgado
 MINECRAFT_DIR=/home/minecraft/minecraft/
 DESKTOP_FILE=/usr/share/applications/minecraft-server.desktop
 VERSION_FILE=version.txt
@@ -16,7 +25,7 @@ else
    echo Your system is out-of-date
    curl -ks $DOWNLOAD_URL -o $SERVER_VERSION
    chmod 664 $SERVER_VERSION
-   chown jdelgado:jdelgado $SERVER_VERSION
+   chown $MINECRAFT_USER:$MINECRAFT_GROUP $SERVER_VERSION
    mv $SERVER_VERSION $MINECRAFT_DIR
    sed -i "s/$CURRENT_VERSION/$SERVER_VERSION/g" $VERSION_FILE
    sed -i "s/$CURRENT_VERSION/$SERVER_VERSION/g" $DESKTOP_FILE
