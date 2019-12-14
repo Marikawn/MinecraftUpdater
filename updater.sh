@@ -69,9 +69,9 @@ then
         if [ $RESPONSE = "y" ] || [ $RESPONSE = "Y" ]
         then
             echo Creating $VERSION_FILE ...
-            echo $POSSIBLE_SERVER_NAME >> $MINECRAFT_DIR/$VERSION_FILE
-            chown $MINECRAFT_USER:$MINECRAFT_GROUP $MINECRAFT_DIR/$VERSION_FILE
-            chmod 664 $MINECRAFT_DIR/$VERSION_FILE
+            echo $POSSIBLE_SERVER_NAME >> $VERSION_FILE
+            chown $MINECRAFT_USER:$MINECRAFT_GROUP $VERSION_FILE
+            chmod 664 $VERSION_FILE
         else
             echo Ok then, create your own version file and re-run the script.
             exit 1
