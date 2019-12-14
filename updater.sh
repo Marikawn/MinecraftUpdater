@@ -1,7 +1,6 @@
 #!/bin/bash
 # Sample Usage
-# ./updater.sh minecraft minecraft /home/minecraft/minecraft /usr/share/applications/minecraft-server.desktop
-
+# ./updater.sh minecraftuser minecraftgroup /home/minecraftuser/serverdirectory /usr/share/applications/minecraft-server.desktop
 
 if [ "$#" -eq 4 ]
 then
