@@ -4,31 +4,33 @@
 ## MINECRAFT_USER = The user that owns the minecraft server file.
 ## MINECRAFT_GROUP = The group that owns the minecraft server file.
 ## MINECRAFT_DIR = The directory where the minecraft server jar file is stored on your system.
-## DESKTOP_FILE = Modified the shortcut for the minecraft server for Ubuntu systems.
+## DESKTOP_FILE = Modified the shortcut for the minecraft server for systems that use GNOME3.
 ## VERSION_FILE = A file which lives within minecraft server directory which only contains the current name of the server file. 
 ## ie; minecraft_server.1.14.4.jar
 ## This file will need to be created manually; initially.
 ## SERVER_FILE = Same as SERVER_VERSION, lists the latest version of the Minecraft server file.
 
-MINECRAFT_USER=jdelgado
-MINECRAFT_GROUP=jdelgado
-
 if [ -z $MINECRAFT_USER ]
 then
-    read -p "Enter the username that owns the Minecraft Server directory: " $MINECRAFT_USER
+    read -ep "Enter the username that owns the Minecraft Server directory: " MINECRAFT_USER
 fi
 
 if [ -z $MINECRAFT_GROUP ]
 then
-    read -p "Enter the group that owns that Minecraft Server directory: " $MINECRAFT_GROUP
+    read -ep "Enter the group that owns that Minecraft Server directory: " MINECRAFT_GROUP
 fi
 
-### LEFT OFF HERE, WILL CONTINUE TOMORROW
-#if [ -z $(grep $MINECRAFT_USER /etc/passwd) ] || [ -z $(grep $MINECRAFT_GROUP /etc/group) ]
-#then
-#    echo You have entered an invalid user or group!
-#    exit 1
-#fi
+if [ -z "$(grep $MINECRAFT_USER /etc/passwd)" ]
+then
+    echo You have entered an invalid user: $MINECRAFT_USER
+    exit 1
+fi
+
+if [ -z "$(grep $MINECRAFT_GROUP /etc/group)" ]
+then
+    echo You have entered an invalid group: $MINECRAFT_GROUP
+    exit 1
+fi
 
 MINECRAFT_DIR=/home/minecraft/minecraft
 DESKTOP_FILE=/usr/share/applications/minecraft-server.desktop
@@ -54,9 +56,9 @@ then
         if [ $RESPONSE = "y" ] || [ $RESPONSE = "Y" ]
         then
             echo Creating $VERSION_FILE ...
-            echo $POSSIBLE_SERVER_NAME >> $VERSION_FILE
-            chown $MINECRAFT_USER:$MINECRAFT_GROUP $VERSION_FILE
-            chmod 664 $VERSION_FILE
+            echo $POSSIBLE_SERVER_NAME >> $MINECRAFT_DIR/$VERSION_FILE
+            chown $MINECRAFT_USER:$MINECRAFT_GROUP $MINECRAFT_DIR/$VERSION_FILE
+            chmod 664 $MINECRAFT_DIR/$VERSION_FILE
         else
             echo Ok then, create your own version file and re-run the script.
             exit 1
