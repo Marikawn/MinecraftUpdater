@@ -29,7 +29,9 @@ Follow prompts
 - $DESKTOP_FILE = Modified the shortcut for the minecraft server for systems that use GNOME3.
 - $VERSION_FILE = A file which lives within minecraft server directory which only contains the current filename of the server JAR file.
   - This file will need to be created manually; initially. If not, the script will help you create this file.
-- SERVER_FILE = Same as $SERVER_VERSION, lists the latest version of the Minecraft server file.
+- $SERVER_FILE = Same as $SERVER_VERSION, lists the latest version of the Minecraft server file.
 
 
-If you have any questions about this script, feel free to e-mail me at: marikawn<at>gmail.com
+Note: Prior to running this script make sure that you understand what it does. **USE AT YOUR OWN RISK.**
+
+If you have any questions about this script, feel free to e-mail me at: marikawn@gmail.com
