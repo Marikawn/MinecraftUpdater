@@ -44,8 +44,6 @@ then
     fi
 fi
 
-echo The dir path is: $MINECRAFT_DIR
-
 if [ -z $DESKTOP_FILE ]
 then
     read -ep "Enter the full path to your Desktop shortcut file: " DESKTOP_FILE
