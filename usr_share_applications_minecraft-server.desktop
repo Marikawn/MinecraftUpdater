@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Game;ActionGame;AdventureGame;
+Exec=java -Xmx8G -Xms8G -jar /home/minecraft/minecraft/minecraft_server.1.15.jar nogui
+Path=/home/minecraft/minecraft
+Icon=/usr/share/icons/hicolor/symbolic/apps/minecraft-server.png
+Terminal=true
+Type=Application
+Name=Minecraft Server
+Comment=The world's most exciting block simulator, now on Ubuntu!
