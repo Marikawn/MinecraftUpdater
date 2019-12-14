@@ -7,7 +7,8 @@ if [ "$#" -eq 4 ]
 then
     MINECRAFT_USER=$1
     MINECRAFT_GROUP=$2
-    MINECRAFT_DIR=$3
+    MINECRAFT_DIR_TMP=$3
+    MINECRAFT_DIR=$(echo "$MINECRAFT_DIR_TMP" | sed 's:/*$::')
     DESKTOP_FILE=$4
 fi
 
@@ -35,13 +36,16 @@ fi
 
 if [ -z $MINECRAFT_DIR ]
 then
-    read -ep "Enter the Minecraft server directory (omit trailing '/'): " MINECRAFT_DIR
+    read -ep "Enter the Minecraft server directory: " MINECRAFT_DIR_TMP
+    MINECRAFT_DIR=$(echo "$MINECRAFT_DIR_TMP" | sed 's:/*$::')
     if [ ! -e $MINECRAFT_DIR ]
     then
         echo The directory $MINECRAFT_DIR does not exist!
         exit 1
     fi
 fi
+
+echo The dir path is: $MINECRAFT_DIR
 
 if [ -z $DESKTOP_FILE ]
 then
