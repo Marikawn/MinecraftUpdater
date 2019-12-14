@@ -1,15 +1,5 @@
 #!/bin/bash
 
-## Notes about script
-## MINECRAFT_USER = The user that owns the minecraft server file.
-## MINECRAFT_GROUP = The group that owns the minecraft server file.
-## MINECRAFT_DIR = The directory where the minecraft server jar file is stored on your system.
-## DESKTOP_FILE = Modified the shortcut for the minecraft server for systems that use GNOME3.
-## VERSION_FILE = A file which lives within minecraft server directory which only contains the current name of the server file. 
-## ie; minecraft_server.1.14.4.jar
-## This file will need to be created manually; initially.
-## SERVER_FILE = Same as SERVER_VERSION, lists the latest version of the Minecraft server file.
-
 if [ "$#" -eq 4 ]
 then
     MINECRAFT_USER=$1
