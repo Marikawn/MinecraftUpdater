@@ -10,6 +10,14 @@
 ## This file will need to be created manually; initially.
 ## SERVER_FILE = Same as SERVER_VERSION, lists the latest version of the Minecraft server file.
 
+if [ "$#" -eq 4 ]
+then
+    MINECRAFT_USER=$1
+    MINECRAFT_GROUP=$2
+    MINECRAFT_DIR=$3
+    DESKTOP_FILE=$4
+fi
+
 if [ -z $MINECRAFT_USER ]
 then
     read -ep "Enter the username that owns the Minecraft Server directory: " MINECRAFT_USER
@@ -32,19 +40,31 @@ then
     exit 1
 fi
 
-MINECRAFT_DIR=/home/minecraft/minecraft
-DESKTOP_FILE=/usr/share/applications/minecraft-server.desktop
+if [ -z $MINECRAFT_DIR ]
+then
+    read -ep "Enter the Minecraft server directory (omit trailing '/'): " MINECRAFT_DIR
+    if [ ! -e $MINECRAFT_DIR ]
+    then
+        echo The directory $MINECRAFT_DIR does not exist!
+        exit 1
+    fi
+fi
+
+if [ -z $DESKTOP_FILE ]
+then
+    read -ep "Enter the full path to your Desktop shortcut file: " DESKTOP_FILE
+    if [ ! -e $DESKTOP_FILE ]
+    then
+        echo I can\'t find the $DESKTOP_FILE. If you don\'t have one, see Github repository for sample and place it within the /usr/share/applications/ directory.
+        exit 1
+    fi
+fi
+
 VERSION_FILE=$MINECRAFT_DIR/version.txt
 CURL_OUT=$(curl -ks https://www.minecraft.net/en-us/download/server/ | egrep -i "href" | egrep -i "server.jar")
 DOWNLOAD_URL=$(echo $CURL_OUT | sed 's/.*\"\(.*\.jar\)\".*/\1/' | tr -d '\r')
 SERVER_FILE=$(echo $CURL_OUT | sed 's/.*>\(.*\)<\/a>/\1/'i | tr -d '\r')
 SERVER_VERSION=$SERVER_FILE
-
-if [ ! -e $MINECRAFT_DIR ]
-then
-    echo The directory $MINECRAFT_DIR does not exist!
-    exit 1
-fi
 
 if [ ! -e $VERSION_FILE ]
 then
