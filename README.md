@@ -15,6 +15,8 @@ To run this script simply execute it locally:
 
 ```
 ./updater.sh <user> <group> <minecraft_server_directory> <destkop_full_file_path>
+
+Example
 ./updater.sh minecraftuser minecraftgroup /home/minecraftuser/serverdirectory /usr/share/applications/minecraft-server.desktop
 
 OR
