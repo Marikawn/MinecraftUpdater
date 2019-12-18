@@ -6,7 +6,7 @@ I created this bash script to automate the process of downloading/updating the M
 The system I am using is Ubuntu 18.04.3 LTS (Bionic Beaver) which uses GNOME3. 
 - I have created a user & group on my system named "minecraft"
 - I have installed the Minecraft server within this user's home directory: /home/minecraft/
-- Also within this minecraft server directory I created a simple text file named version.txt which only contains the filename of the currently installed minecraft file (ie; minecraft_server1.14.4.jar). 
+- Also within this minecraft server directory I created a simple text file named version.txt which only contains the filename of the currently installed minecraft file (ie; minecraft_server.1.14.4.jar). 
 - I created a GNOME3 Destkop shortcut file in the following location: /usr/share/applications/minecraft-server.desktop
   - See repository for sample copy of sample.
 
